@@ -49,7 +49,7 @@ function changeCity(event) {
           <div class="time">${cityTime.format(
             "hh:mm:ss:SS"
           )}<small>${cityTime.format("A")} </small></div>
-        </div>`;
+        </div><a href="/">Return to main page</a>`;
 }
 
 let selectCityElement = document.querySelector("#city");
