@@ -10,7 +10,7 @@ function updateTime() {
 
     losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM Do YYYY");
     losAngelesTimeElement.innerHTML = losAngelesTime.format(
-      "hh:mm:ss:SS [<small>]A[</small>]"
+      "hh:mm:ss:SS [<small>] A[</small>]"
     );
   }
 
@@ -28,6 +28,19 @@ function updateTime() {
       "hh:mm:ss:SS [<small>]A[</small>]"
     );
   }
+
+  let honoluluElement = document.querySelector("#honolulu");
+  if (honoluluElement) {
+    let honoluluDateElement = honoluluElement.querySelector(".date");
+    let honoluluTimeElement = honoluluElement.querySelector(".time");
+
+    honoluluTime = moment().tz("Pacific/Honolulu");
+
+    honoluluDateElement.innerHTML = honoluluTime.format("MMMM Do YYYY");
+    honoluluTimeElement.innerHTML = honoluluTime.format(
+      "hh:mm:ss:SS [<small>]A[</small>]"
+    );
+  }
 }
 
 updateTime();
@@ -38,6 +51,7 @@ function changeCity(event) {
   if (cityTimezone === "current") {
     cityTimezone = moment.tz.guess();
   }
+
   let cityTime = moment().tz(cityTimezone);
   let cityName = cityTimezone.replace("_", " ").replace("-", " ").split("/")[1];
   let citySelected = document.querySelector("#cities");
@@ -47,8 +61,8 @@ function changeCity(event) {
             <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
           </div>
           <div class="time">${cityTime.format(
-            "hh:mm:ss:SS"
-          )}<small>${cityTime.format("A")} </small></div>
+            "hh:mm:ss"
+          )} <small>${cityTime.format("A")}</small></div>
         </div><a href="/">Return to main page</a>`;
 }
 
